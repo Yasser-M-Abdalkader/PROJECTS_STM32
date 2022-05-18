@@ -22,7 +22,8 @@
 
 void MNVIC_voidInit(void)
 {
-    /*********************************************************************************
+#define SCB_BASE_ADDRESS 0xE000ED00
+	/*********************************************************************************
      * \def SCB_AIRCR
      *      Application interrupt and reset control register(AIRCR): The AIRCR provides
      *      priority grouping control for interrupts
