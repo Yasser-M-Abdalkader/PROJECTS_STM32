@@ -18,7 +18,7 @@
 void main(void)
 {
     MRCC_voidInitSysClock();
-    MRCC_voidEnableClock(RCC_APB2, 2); /* Enable GPIOA Clock */
+    MRCC_voidEnableClock(RCC_APB2, 2); /* Enable GPIOA Clock*/
 
     MGPIO_voidSetPinDirection(GPIOA, GPIO_PIN0, GPIO_OUTPUT_SPEED_2MHZ_PP);
     MGPIO_voidSetPinDirection(GPIOA, GPIO_PIN1, GPIO_OUTPUT_SPEED_2MHZ_PP);
