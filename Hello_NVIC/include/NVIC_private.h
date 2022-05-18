@@ -14,7 +14,7 @@
  *  NVIC base address
  *********************************************************************************/
 #define NVIC_BASE_ADDRESS 0xE000E100
-#define SCB_BASE_ADDRESS 0xE000ED00
+
 
 /*********************************************************************************
  * \def NVIC_ISER0
@@ -52,7 +52,7 @@
  * Interrupt priority register(IPR): provides a 4-bit priority field for each 
  * interrupt
  *********************************************************************************/
-#define MNVIC_IPR    ((volatile u8 *)NVIC_BASE_ADDRESS + 0x300)
+#define MNVIC_IPR    ((volatile u8 *)(NVIC_BASE_ADDRESS + 0x300))
 
 #define MNVIC_GROUP_4_SUB_0  0x05FA0300    /* Groups: 16   | SubRoups: None    */
 #define MNVIC_GROUP_3_SUB_1  0x05FA0400    /* Groups: 8    | SubRoups: 2       */
