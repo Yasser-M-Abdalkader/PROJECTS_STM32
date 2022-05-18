@@ -11,6 +11,15 @@
 #define NVIC_INTERFACE_H_
 
 /*********************************************************************************
+ *  \fn     void MNVIC_voidInit(void) 
+ *  \brief  Initiates NVIC with the number of groups and subgroups
+ *  \param  None
+ *  \return None
+ *  \note   This function will be deleted once SCB driver is implemented 
+*********************************************************************************/
+void MNVIC_voidInit(void);
+
+/*********************************************************************************
  *  \fn     void MNVIC_voidEnableInterrupt(u8 copy_u8IntNumber) 
  *  \brief  Enable External Interrupts
  *  \param  copy_u8IntNumber External interrupt number [0 : 59]
@@ -50,11 +59,17 @@ void MNVIC_voidClearPendingFlag(u8 copy_u8IntNumber);
 *********************************************************************************/
 u8 MNVIC_u8GetActiveFlag(u8 copy_u8IntNumber);
 
-void MNVIC_voidSetPriority(s8 copy_s8IntNumber,u8 copy_u8GroupPriority, u8 copy_u8SubGroupPriority, u32 copy_u3GroupHierarcy);
+void MNVIC_voidSetPriority(u8 copy_u8IntNumber, u8 copy_u8Priority);
 
-#define NVIC_PRIORITY_HIERARCHY0  0x05FA0300    /* Groups: 16   | SubRoups: None    */
-#define NVIC_PRIORITY_HIERARCHY1  0x05FA0400    /* Groups: 8    | SubRoups: 2       */
-#define NVIC_PRIORITY_HIERARCHY2  0x05FA0500    /* Groups: 4    | SubRoups: 4       */
-#define NVIC_PRIORITY_HIERARCHY3  0x05FA0600    /* Groups: 2    | SubRoups: 8       */
-#define NVIC_PRIORITY_HIERARCHY4  0x05FA0700    /* Groups: None | SubRoups: 16      */
+/*********************************************************************************
+ *  \def    MNVIC_GROUP_SUB_DISTRIBUTION
+ *  \brief  Choose number of Groups and subgroups for software priority.
+ *          the following options are available:    
+ *  \li     \c MNVIC_GROUP_4_SUB_0 // Groups: 16   | SubRoups: None
+ *  \li     \c MNVIC_GROUP_3_SUB_1 // Groups: 8    | SubRoups: 2
+ *  \li     \c MNVIC_GROUP_2_SUB_2 // Groups: 4    | SubRoups: 4
+ *  \li     \c MNVIC_GROUP_1_SUB_3 // Groups: 2    | SubRoups: 8
+ *  \li     \c MNVIC_GROUP_0_SUB_4 // Groups: None | SubRoups: 16
+*********************************************************************************/
+#define MNVIC_GROUP_SUB_DISTRIBUTION    MNVIC_GROUP_2_SUB_2   
 #endif

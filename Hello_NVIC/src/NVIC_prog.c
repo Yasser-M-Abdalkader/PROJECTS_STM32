@@ -20,6 +20,19 @@
 #include "NVIC_config.h"
 /********************************************************************************/
 
+void MNVIC_voidInit(void)
+{
+    /*********************************************************************************
+     * \def SCB_AIRCR
+     *      Application interrupt and reset control register(AIRCR): The AIRCR provides
+     *      priority grouping control for interrupts
+     * \note defined inside the function because it is architural mistake to define
+     *      a register from SCB prepheral with NVIC prepheral
+     *********************************************************************************/
+#define SCB_AIRCR *((volatile u32 *)(SCB_BASE_ADDRESS + 0x0C))
+    SCB_AIRCR = MNVIC_GROUP_SUB_DISTRIBUTION;
+}
+
 void MNVIC_voidEnableInterrupt(u8 copy_u8IntNumber)
 {
     if (copy_u8IntNumber < 32)
@@ -106,17 +119,28 @@ u8 MNVIC_u8GetActiveFlag(u8 copy_u8IntNumber)
     }
     return local_u8ActiveFlage;
 }
-void MNVIC_voidSetPriority(s8 copy_s8IntNumber, u8 copy_u8GroupPriority, u8 copy_u8SubGroupPriority, u32 copy_u3GroupHierarcy)
+// void MNVIC_voidSetPriority(s8 copy_s8IntNumber, u8 copy_u8GroupPriority, u8 copy_u8SubGroupPriority, u32 copy_u3GroupHierarcy)
+// {
+//     u8 local_u8Priority = copy_u8SubGroupPriority | copy_u8GroupPriority << (u8)((copy_u3GroupHierarcy - 0x05FA0300) / 256);
+//     /* Check whetherr interrupt is core prepheral or external prepheral */
+//     if (copy_s8IntNumber < 0)
+//     {
+//     }
+//     else
+//     {
+//         NVIC_IPR[copy_s8IntNumber] = local_u8Priority << 4;
+//         SCB_AIRCR = copy_u3GroupHierarcy;
+//     }
+// }
+
+void MNVIC_voidSetPriority(u8 copy_u8IntNumber, u8 copy_u8Priority)
 {
-    u8 local_u8Priority = copy_u8SubGroupPriority | copy_u8GroupPriority << (u8)((copy_u3GroupHierarcy - 0x05FA0300) / 256);
-    /* Check whetherr interrupt is core prepheral or external prepheral */
-    if (copy_s8IntNumber < 0)
+    if (copy_u8IntNumber < 60)
     {
-        
+        MNVIC_IPR[copy_u8IntNumber] = copy_u8Priority; /* Assuming valid input */
     }
     else
     {
-        NVIC_IPR[copy_s8IntNumber] = local_u8Priority << 4;
-        SCB_AIRCR = copy_u3GroupHierarcy;
+        /* Return Error State */
     }
 }

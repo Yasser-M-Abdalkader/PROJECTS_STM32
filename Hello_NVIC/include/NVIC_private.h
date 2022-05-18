@@ -52,18 +52,13 @@
  * Interrupt priority register(IPR): provides a 4-bit priority field for each 
  * interrupt
  *********************************************************************************/
-#define NVIC_IPR    ((volatile u8 *)NVIC_BASE_ADDRESS + 0x300)
-/*********************************************************************************
- * \def SCB_AIRCR
- * Application interrupt and reset control register(AIRCR): The AIRCR provides 
- * priority grouping control for interrupts
- *********************************************************************************/
-#define SCB_AIRCR   *((volatile u32 *)(SCB_BASE_ADDRESS + 0x0C))
+#define MNVIC_IPR    ((volatile u8 *)NVIC_BASE_ADDRESS + 0x300)
 
-#define NVIC_PRIGROUP0
-#define NVIC_PRIGROUP1
-#define NVIC_PRIGROUP2
-#define NVIC_PRIGROUP3
+#define MNVIC_GROUP_4_SUB_0  0x05FA0300    /* Groups: 16   | SubRoups: None    */
+#define MNVIC_GROUP_3_SUB_1  0x05FA0400    /* Groups: 8    | SubRoups: 2       */
+#define MNVIC_GROUP_2_SUB_2  0x05FA0500    /* Groups: 4    | SubRoups: 4       */
+#define MNVIC_GROUP_1_SUB_3  0x05FA0600    /* Groups: 2    | SubRoups: 8       */
+#define MNVIC_GROUP_0_SUB_4  0x05FA0700    /* Groups: None | SubRoups: 16      */
 
 
 
