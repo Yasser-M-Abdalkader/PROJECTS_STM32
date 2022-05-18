@@ -1,0 +1,5 @@
+avrpaths/AVRDUDE=D\:\\Eureka\\IMT\\01- IMT SDK\\IMT_SDK_Win_64\\WinAVR\\bin
+avrpaths/AVRGCC=D\:\\Eureka\\IMT\\01- IMT SDK\\IMT_SDK_Win_64\\WinAVR\\bin
+avrpaths/AVRINCLUDE=D\:\\Eureka\\IMT\\01- IMT SDK\\IMT_SDK_Win_64\\WinAVR\\avr\\include
+avrpaths/MAKE=D\:\\Eureka\\IMT\\01- IMT SDK\\IMT_SDK_Win_64\\WinAVR\\utils\\bin
+eclipse.preferences.version=1
