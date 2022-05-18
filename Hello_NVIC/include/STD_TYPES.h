@@ -29,6 +29,6 @@ typedef double                  f64;
  *
  *************************************************************/
 
-#define NULL                    void * 0
+#define NULL                    (void *) 0
 
 #endif

@@ -17,7 +17,7 @@
  * \li      \c RCC_HSI
  * \li      \c RCC_PLL
  ************************************************************************************************/
-#define RCC_CLOCK_TYPE RCC_PLL
+#define RCC_CLOCK_TYPE RCC_HSE_CRYSTAL
 
 /************************************************************************************************
  * \note    Only Choose if PLL is chosen as Clock Type
